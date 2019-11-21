@@ -46,6 +46,29 @@ set mouse=a
 " Show first search result
 set incsearch
 
+" Increase command history
+set history=200
+
+" Tab comletion for commands
+set wildmode=longest,list,full
+set wildmenu
+
+" Show @@@ in the last line if it is truncated.
+set display=truncate
+
+" Show at least one line above/below
+set scrolloff=1
+
+" Ignore octal for C-a and C-x
+set nrformats-=octal
+
+" Filetype detection
+filetype plugin indent on
+
+" Better timeouts for ESC
+set ttimeout
+set ttimeoutlen=100
+
 " Leader is \
 let mapleader = "\\"
 
