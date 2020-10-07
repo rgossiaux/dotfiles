@@ -69,6 +69,9 @@ filetype plugin indent on
 set ttimeout
 set ttimeoutlen=100
 
+" Write swap files sooner than the 4s default
+set updatetime=300
+
 " Leader is \
 let mapleader = "\\"
 
@@ -89,7 +92,7 @@ let g:fzf_nvim_statusline = 0
 nnoremap <silent> <leader>t :Files<CR>
 nnoremap <silent> <leader>f :BLines<CR>
 
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 
 Plug 'dense-analysis/ale'
 let g:ale_linters = {'rust': ['rls','cargo']}
@@ -106,7 +109,33 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" For git integration, especially :Gdiff
+Plug 'tpope/vim-fugitive'
+
+" Adds gc motion to toggle comments
 Plug 'tpope/vim-commentary'
+
+" Adds ys, ds, cs, and S in visual mode for
+" adding, deleting, changing surrounds
+Plug 'tpope/vim-surround'
+
+" Adds a lot of handy things with [ and ]
+" [<space>: add <count> blank lines above
+" ]n: next git conflict marker
+" [x: html encode
+" [u: url encode
+" [q: prev quicklist
+" [l: prev loclist
+" [b: prev buffer
+Plug 'tpope/vim-unimpaired'
+
+" Makes some other plugins work well with . command
+Plug 'tpope/vim-repeat'
+
+" Adds a lot of handy text objects, including lots of
+" separators like _ and + and a for arguments.
+" Possibly consider switching to textobj-user though.
+Plug 'wellle/targets.vim'
 
 call plug#end()
 
