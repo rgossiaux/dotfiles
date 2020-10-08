@@ -67,7 +67,7 @@ filetype plugin indent on
 
 " Better timeouts for ESC
 set ttimeout
-set ttimeoutlen=100
+set ttimeoutlen=50
 
 " Write swap files sooner than the 4s default
 set updatetime=300
