@@ -106,6 +106,7 @@ highlight ALEWarning ctermbg=none cterm=underline
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nnoremap gy :ALEGoToTypeDefinition<CR>
 nnoremap gd :ALEGoToDefinition<CR>
 nnoremap <leader>rn :ALERename<CR>
 
