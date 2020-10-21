@@ -6,6 +6,9 @@ set backupdir=/tmp//
 set directory=/tmp//
 set undodir=/tmp//
 
+" Play nicely with inotify
+set backupcopy=yes
+
 " Unfuck tabs
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
