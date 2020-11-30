@@ -21,6 +21,9 @@ set visualbell
 " Show the current command
 set showcmd
 
+" Allow per-project config files
+set exrc
+
 " Don't open that annoying menu for autocomplete
 set completeopt-=preview
 
@@ -98,7 +101,7 @@ nnoremap <silent> <leader>f :BLines<CR>
 " Plug 'rust-lang/rust.vim'
 
 Plug 'dense-analysis/ale'
-let g:ale_linters = {'rust': ['rls','cargo']}
+let g:ale_linters = {'rust': ['analyzer']}
 let g:ale_fixers = {'rust': ['rustfmt']}
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
@@ -115,6 +118,9 @@ nnoremap <leader>rn :ALERename<CR>
 
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Syntax highlighting and indentation
+Plug 'sheerun/vim-polyglot'
 
 " For git integration, especially :Gdiff
 Plug 'tpope/vim-fugitive'
@@ -145,3 +151,6 @@ Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 
 call plug#end()
+
+" Defend against bad .vimrc files
+set secure
