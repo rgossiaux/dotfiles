@@ -8,6 +8,10 @@ vim-plug will automatically be installed when vim is launched. Then `:PlugInstal
 
 `pyright` must be installed separately for Python LSP functionality. ALE will detect it automatically.
 
+# Misc other setup
+I use this terminal font: https://github.com/tonsky/FiraCode
+I use iTerm2 as my terminal.
+
 # Useful commands
 
 ## Shell
