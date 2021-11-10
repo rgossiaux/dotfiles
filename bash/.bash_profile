@@ -7,3 +7,5 @@ if [ -f '/Users/rgossiaux/google-cloud-sdk/path.bash.inc' ]; then . '/Users/rgos
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/rgossiaux/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/rgossiaux/google-cloud-sdk/completion.bash.inc'; fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
