@@ -109,28 +109,6 @@ nnoremap <silent> <leader>f :BLines<CR>
 
 " Plug 'rust-lang/rust.vim'
 
-Plug 'dense-analysis/ale'
-let g:ale_linters = {'rust': ['analyzer']}
-let g:ale_fixers = {'rust': ['rustfmt']}
-let g:ale_completion_enabled = 1
-let g:ale_fix_on_save = 1
-let g:ale_rust_rls_toolchain = 'stable'
-
-highlight ALEError ctermbg=none cterm=underline
-highlight ALEWarning ctermbg=none cterm=underline
-
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap gy :ALEGoToTypeDefinition<CR>
-nnoremap gd :ALEGoToDefinition<CR>
-nnoremap <leader>rn :ALERename<CR>
-
-
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Syntax highlighting and indentation
-Plug 'sheerun/vim-polyglot'
-
 " For git integration, especially :Gdiff
 Plug 'tpope/vim-fugitive'
 
@@ -179,7 +157,13 @@ nnoremap <silent> <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nmap <silent> <C-k> :lua vim.lsp.diagnostic.goto_prev()<CR>
 nmap <silent> <C-j> :lua vim.lsp.diagnostic.goto_next()<CR>
 
-autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 5000)
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 5000)
+augroup END
+
+" Formatter for per-project formatting
+Plug 'mhartington/formatter.nvim'
 
 " nvim LSP code action display
 Plug 'kosayoda/nvim-lightbulb'
@@ -189,8 +173,8 @@ autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects', {'branch': '0.5-compat'}
 
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 
 " Open all folds when opening a buffer
 autocmd BufWinEnter * normal zR
@@ -219,8 +203,6 @@ Plug 'nvim-lua/completion-nvim'
 
 let g:completion_enable_snippet = 'vim-vsnip'
 
-let g:completion_enable_snippet = 'vim-vsnip'
-
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
@@ -241,6 +223,7 @@ call plug#end()
 :lua << EOF
 local nvim_lsp = require'lspconfig'
 local configs = require'lspconfig/configs'
+nvim_lsp.pyright.setup{}
 EOF
 
 :lua << EOF
@@ -288,6 +271,7 @@ require 'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
+    disable = {"python"},
   },
   highlight = {
     enable = true,
